@@ -59,7 +59,7 @@ public class TicTacToe extends JPanel
                 JOptionPane.showConfirmDialog(null, checkForWin() + " wins. Game Over.", "GAME OVER", JOptionPane.OK_CANCEL_OPTION);
                 resetButtons();
             }
-            else if((checkForWin() == false) && (checkTiles() == false))
+            else if((checkForWin().length() == 0) && (checkTiles() == false))
             {
                 JOptionPane.showConfirmDialog(null, "Tie Game.", "GAME OVER", JOptionPane.OK_CANCEL_OPTION);
                 resetButtons();

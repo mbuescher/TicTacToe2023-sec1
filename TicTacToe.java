@@ -48,48 +48,65 @@ public class TicTacToe extends JPanel
             else if (alternate % 2 == 0)
             {     
                 buttonClicked.setText("X");
-                alternate++;
             }
             else
             {
                 buttonClicked.setText("O");
-                alternate++;
-            }   
-
+            }
+            alternate++;
+            if(checkForWin().length() > 0)
+            {
+                JOptionPane.showConfirmDialog(null, checkForWin() + " wins. Game Over.", "GAME OVER", JOptionPane.OK_CANCEL_OPTION);
+                resetButtons();
+            }
         }
 
-        public boolean checkForWin()
+        public String checkForWin()
         {
             /**   Reference: the button array is arranged like this as the board
              *      0 | 1 | 2
              *      3 | 4 | 5
              *      6 | 7 | 8
              */
+             
             //horizontal win check
-            if( checkAdjacent(0,1) && checkAdjacent(1,2) ) //no need to put " == true" because the default check is for true
-                return true;
-            else if( checkAdjacent(3,4) && checkAdjacent(4,5) )
-                return true;
-            else if ( checkAdjacent(6,7) && checkAdjacent(7,8))
-                return true;
+            if( checkAdjacent(0,1) && checkAdjacent(1,2)) {//no need to put " == true" because the default check is for true
+                return buttons[1].getText();
+            }
 
+            else if( checkAdjacent(3,4) && checkAdjacent(4,5)) {
+                return buttons[4].getText();
+            }
+            
+            else if ( checkAdjacent(6,7) && checkAdjacent(7,8)) {
+                return buttons[7].getText();
+            }
+            
             //vertical win check
-            else if ( checkAdjacent(0,3) && checkAdjacent(3,6))
-                return true;  
-            else if ( checkAdjacent(1,4) && checkAdjacent(4,7))
-                return true;
-            else if ( checkAdjacent(2,5) && checkAdjacent(5,8))
-                return true;
-
+            else if ( checkAdjacent(0,3) && checkAdjacent(3,6)) {
+                return buttons[3].getText();
+            }
+            
+            else if ( checkAdjacent(1,4) && checkAdjacent(4,7)) {
+                return buttons[4].getText();
+            }
+            
+            else if ( checkAdjacent(2,5) && checkAdjacent(5,8)) {
+                return buttons[5].getText();
+            }
+            
             //diagonal win check
-            else if ( checkAdjacent(0,4) && checkAdjacent(4,8))
-                return true;  
-            else if ( checkAdjacent(2,4) && checkAdjacent(4,6))
-                return true;
-            else 
-                return false;
-
-
+            else if ( checkAdjacent(0,4) && checkAdjacent(4,8)) {
+                return buttons[4].getText();
+            }
+            
+            else if ( checkAdjacent(2,4) && checkAdjacent(4,6)) {
+                return buttons[4].getText();
+            }            
+            
+            else {
+                return "";            
+            }
         }
 
         public boolean checkAdjacent(int a, int b)

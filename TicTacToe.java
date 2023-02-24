@@ -59,6 +59,11 @@ public class TicTacToe extends JPanel
                 JOptionPane.showConfirmDialog(null, checkForWin() + " wins. Game Over.", "GAME OVER", JOptionPane.OK_CANCEL_OPTION);
                 resetButtons();
             }
+            else if((checkForWin() == false) && (checkTiles() == false))
+            {
+                JOptionPane.showConfirmDialog(null, "Tie Game.", "GAME OVER", JOptionPane.OK_CANCEL_OPTION);
+                resetButtons();
+            }
         }
 
         public String checkForWin()
@@ -108,7 +113,20 @@ public class TicTacToe extends JPanel
                 return "";            
             }
         }
-
+        
+        public boolean checkTiles()
+        {
+            String blank = "";
+            for(int check = 0; check <= 8; check++)
+            {
+               if  (buttons[check].getText().length() == 0) 
+               {
+                   return true;
+               }
+            }
+            return false;
+        }
+        
         public boolean checkAdjacent(int a, int b)
         {
             if ( buttons[a].getText().equals(buttons[b].getText()) && !buttons[a].getText().equals("") )

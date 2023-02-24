@@ -41,18 +41,20 @@ public class TicTacToe extends JPanel
         {
 
             JButton buttonClicked = (JButton)e.getSource(); //get the particular button that was clicked
-            if(alternate%2 == 0)
-                buttonClicked.setText("X");
-            else
-                buttonClicked.setText("O");
-
-            if(checkForWin() == true)
+            if (buttonClicked.getText() != "")
             {
-                JOptionPane.showConfirmDialog(null, "Game Over.");
-                resetButtons();
+                JOptionPane.showMessageDialog(null, "You can't do that doofus!");
             }
-
-            alternate++;
+            else if (alternate % 2 == 0)
+            {     
+                buttonClicked.setText("X");
+                alternate++;
+            }
+            else
+            {
+                buttonClicked.setText("O");
+                alternate++;
+            }   
 
         }
 

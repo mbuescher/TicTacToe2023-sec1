@@ -48,12 +48,14 @@ public class TicTacToe extends JPanel
             else if (alternate % 2 == 0)
             {     
                 buttonClicked.setText("X");
+                alternate++;
             }
             else
             {
                 buttonClicked.setText("O");
+                alternate++;
             }
-            alternate++;
+
             if(checkForWin().length() > 0)
             {
                 JOptionPane.showConfirmDialog(null, checkForWin() + " wins. Game Over.", "GAME OVER", JOptionPane.OK_CANCEL_OPTION);
